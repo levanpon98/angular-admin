@@ -1,0 +1,73 @@
+<div class="padding-15">
+
+    <div class="login-box">
+
+        <!-- login form -->
+        <form action="index.html" method="post" class="sky-form boxed">
+            <header><i class="fa fa-users"></i> Sign In</header>
+
+            <!--
+            <div class="alert alert-danger noborder text-center weight-400 nomargin noradius">
+                Invalid Email or Password!
+            </div>
+
+            <div class="alert alert-warning noborder text-center weight-400 nomargin noradius">
+                Account Inactive!
+            </div>
+
+            <div class="alert alert-default noborder text-center weight-400 nomargin noradius">
+                <strong>Too many failures!</strong> <br />
+                Please wait: <span class="inlineCountdown" data-seconds="180"></span>
+            </div>
+            -->
+
+            <fieldset>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+                    <section>
+                        <label class="label">E-mail</label>
+                        <label class="input">
+                            <i class="icon-append fa fa-envelope"></i>
+                            <input id="email" type="email" formControlName="email">
+                            <span class="tooltip tooltip-top-right">Email Address</span>
+                        </label>
+                        <div *ngIf="form.email.errors" class="invalid-feedback">
+                            <div *ngIf="form.email.errors.required && form.email.touched">Email is required</div>
+                            <div *ngIf="form.email.errors.pattern && form.email.touched">Please enter a valid email</div>
+                            <div *ngIf="form.email.errors.minlength && form.email.touched">Email is least 10 letters</div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <label class="label">Password</label>
+                        <label class="input">
+                            <i class="icon-append fa fa-lock"></i>
+                            <input id="password" type="password" formControlName="password">
+                            <b class="tooltip tooltip-top-right">Type your Password</b>
+                        </label>
+                        <div *ngIf="form.password.errors" class="invalid-feedback">
+                            <div *ngIf="form.password.errors.required && form.password.touched">Password is required</div>
+                            <div *ngIf="form.password.errors.minlength && form.password.touched">Password is least 8 letters</div>
+                        </div>
+
+                        <label class="checkbox"><input type="checkbox" name="checkbox-inline" checked><i></i>Keep me
+                            logged
+                            in</label>
+                    </section>
+
+
+
+                    <button type="submit" class="btn btn-primary pull-right">Sign In</button>
+                </form>
+            </fieldset>
+
+            <footer>
+
+            </footer>
+        </form>
+        <!-- /login form -->
+
+        <hr/>
+
+    </div>
+
+</div>
