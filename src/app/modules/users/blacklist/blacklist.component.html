@@ -33,7 +33,8 @@
             <!-- panel content -->
             <div class="panel-body">
                 <!--Table-->
-                <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0"
+                       width="100%">
                     <thead>
                     <tr>
                         <th class="th-sm">First Name
@@ -57,26 +58,30 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let user of listOfUsers">
-                        <td>
-                            {{user['first_name']}}
-                        </td>
-                        <td>
-                            {{user['last_name']}}
-                        </td>
-                        <td>
-                            {{user['email']}}
-                        </td>
-                        <td>
-                            {{user['phone']}}
-                        </td>
-                        <td>
-                            {{user['username']}}
-                        </td>
-                        <td>
-                            <button id="{{user['id']}}" type="button" class="btn btn-dark">Remove from Blacklist</button>
-                        </td>
-                    </tr>
+                    <ng-container class = "container" *ngFor="let user of listOfUsers" >
+                        <tr *ngIf="user['status'] == null || user['status'] == 0">
+                            <td>
+                                {{user['first_name']}}
+                            </td>
+                            <td>
+                                {{user['last_name']}}
+                            </td>
+                            <td>
+                                {{user['email']}}
+                            </td>
+                            <td>
+                                {{user['phone']}}
+                            </td>
+                            <td>
+                                {{user['username']}}
+                            </td>
+                            <td>
+                                <button id="{{user['id']}}" type="button" class="btn btn-dark" (click)="removeFromBlacklist(user['id'])">Remove from Blacklist
+                                </button>
+                            </td>
+                        </tr>
+                    </ng-container>
+
                     </tbody>
                 </table>
                 <!--Table-->

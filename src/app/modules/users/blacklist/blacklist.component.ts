@@ -25,4 +25,11 @@ export class BlacklistComponent implements OnInit {
         });
     }
 
+    removeFromBlacklist(userID) {
+        console.log(userID);
+        this.usersService.unlockUserFromBlacklist(userID, 1).then(result => {
+            console.log(result);
+        })
+    }
+
 }

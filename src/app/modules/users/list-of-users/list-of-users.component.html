@@ -21,10 +21,10 @@
 
                 <!-- right options -->
                 <!--<ul class="options pull-right list-inline">-->
-                    <!--<li><a href="" class="opt panel_colapse" data-toggle="tooltip" title="Colapse"-->
-                           <!--data-placement="bottom"></a></li>-->
-                    <!--<li><a href="" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="Fullscreen"-->
-                           <!--data-placement="bottom"><i class="fa fa-expand"></i></a></li>-->
+                <!--<li><a href="" class="opt panel_colapse" data-toggle="tooltip" title="Colapse"-->
+                <!--data-placement="bottom"></a></li>-->
+                <!--<li><a href="" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="Fullscreen"-->
+                <!--data-placement="bottom"><i class="fa fa-expand"></i></a></li>-->
                 <!--</ul>-->
                 <!-- /right options -->
 
@@ -33,7 +33,8 @@
             <!-- panel content -->
             <div class="panel-body">
                 <!--Table-->
-                <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0"
+                       width="100%">
                     <thead>
                     <tr>
                         <th class="th-sm">First Name
@@ -57,7 +58,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let user of listOfUsers">
+                    <ng-container class="container" *ngFor="let user of listOfUsers">
+                        <tr *ngIf="user['status'] != null || user['status'] == 1">
                             <td>
                                 {{user['first_name']}}
                             </td>
@@ -74,9 +76,11 @@
                                 {{user['username']}}
                             </td>
                             <td>
-                                <button id="{{user['id']}}" type="button" class="btn btn-dark">Move to Blacklist</button>
+                                <button id="{{user['id']}}" type="button" class="btn btn-dark">Remove from Blacklist
+                                </button>
                             </td>
                         </tr>
+                    </ng-container>
                     </tbody>
                 </table>
                 <!--Table-->
