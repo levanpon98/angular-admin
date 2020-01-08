@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UsersService} from "../../../services/users.service";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-blacklist',
@@ -14,22 +15,39 @@ export class BlacklistComponent implements OnInit {
 
     constructor(
         private usersService: UsersService,
+        private toastr: ToastrService,
     ) {
 
     }
 
-    ngOnInit() {
+    loadList() {
         this.usersService.getListOfUsers().subscribe(result => {
             this.listOfUsers = result['users'];
-            console.log(this.listOfUsers);
         });
+    }
+
+    showError(message) {
+        this.toastr.error(message, 'Error');
+    }
+
+    showSuccess(message) {
+        this.toastr.success(message, 'Success');
+    }
+
+    ngOnInit() {
+       this.loadList()
     }
 
     removeFromBlacklist(userID) {
         console.log(userID);
-        this.usersService.unlockUserFromBlacklist(userID, 1).then(result => {
-            console.log(result);
-        })
+        this.usersService.unlockUserFromBlacklist(userID, {status: 1}).subscribe(res => {
+            if(res.ok == 1) {
+                this.loadList();
+                this.showSuccess(res.message);
+            } else {
+                this.showError(res.error);
+            }
+        });
     }
 
 }

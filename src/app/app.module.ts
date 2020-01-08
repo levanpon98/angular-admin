@@ -13,7 +13,6 @@ import {ProductsModule} from "./modules/products/products.module";
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login/login.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
-import {MenuComponent} from "./components/menu/menu.component";
 import {LogoutComponent} from './components/logout/logout.component';
 import {AdminComponent} from './components/admin/admin.component';
 
@@ -21,6 +20,7 @@ import {AuthService} from "./services/auth.service";
 import {JwtHelperService} from '@auth0/angular-jwt';
 
 import { AuthInterceptor } from "./guard/auth.interceptor";
+import {SharedModule} from './modules/shared/shared.module';
 
 export function tokenGetter() {
     return localStorage.getItem("token");
@@ -33,7 +33,6 @@ export function tokenGetter() {
         DashboardComponent,
         LogoutComponent,
         AdminComponent,
-        MenuComponent,
     ],
     imports: [
         BrowserModule,
@@ -52,7 +51,7 @@ export function tokenGetter() {
         ToastrModule.forRoot(), // ToastrModule added
         UsersModule,
         ProductsModule,
-
+        SharedModule
     ],
     providers: [
         AuthService,

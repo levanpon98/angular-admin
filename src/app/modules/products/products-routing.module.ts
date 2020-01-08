@@ -4,6 +4,8 @@ import {Routes, RouterModule} from '@angular/router';
 import {AuthGuard} from "../../guard/auth.guard";
 import {ProductsComponent} from "./products.component";
 import {NotYetApprovedComponent} from "./not-yet-approved/not-yet-approved.component";
+import {ListProductComponent} from "./list-product/list-product.component";
+
 
 const routes: Routes = [
     {
@@ -13,6 +15,10 @@ const routes: Routes = [
             {
                 path: 'notYetApproved',
                 component: NotYetApprovedComponent,
+            },
+            {
+                path: 'approved',
+                component: ListProductComponent,
             },
         ],
         canActivate: [AuthGuard]

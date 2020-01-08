@@ -2,11 +2,13 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {UsersRoutingModule} from "./users-routing.module";
+import {ToastrModule} from 'ngx-toastr';
 
 import { ListOfUsersComponent } from './list-of-users/list-of-users.component';
 import { UsersComponent } from './users.component';
 import {UsersService} from "../../services/users.service";
 import { BlacklistComponent } from './blacklist/blacklist.component';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { BlacklistComponent } from './blacklist/blacklist.component';
     imports: [
         CommonModule,
         UsersRoutingModule,
+        SharedModule,
+        ToastrModule.forRoot()
     ],
     exports: [
     ],

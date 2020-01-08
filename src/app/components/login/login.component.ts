@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
     onSubmit(value) {
         console.log(value);
         this.authService.login(value).subscribe((res: any) => {
-            console.log(res);
             if (res.ok) {
                 localStorage.setItem('isLoggedIn', res.ok);
                 localStorage.setItem('token', res.token);

@@ -44,14 +44,11 @@
                         </th>
                         <th class="th-sm">Price
                         </th>
-                        <th class="th-sm">Manipulation
-
-                        </th>
                     </tr>
                     </thead>
                     <tbody>
                         <ng-container class="container" *ngFor="let product of listOfProducts">
-                            <tr *ngIf="product['product']['status'] != null && product['product']['status'] == 0">
+                            <tr *ngIf="product['product']['status'] != null && product['product']['status'] === 1">
                                 <td>
                                     <img class="fit-picture" src="http://localhost:4000/{{product['product']['image']}}" 
                                     width="auto" height="100">
@@ -61,10 +58,6 @@
                                 </td>
                                 <td>
                                     {{product['product']['price']}}
-                                </td>
-                                <td>
-                                    <button class="btn btn-3d btn-green" (click)="approveProduct(product['product']['_id'])" ><i class="fa fa-check"></i>Approve</button>
-                                    <button class="btn btn-3d btn-red" (click)="notApproveProduct(product['product']['_id'])" ><i class="fa fa-remove"></i>Not Approve</button>
                                 </td>
                             </tr>
                         </ng-container>

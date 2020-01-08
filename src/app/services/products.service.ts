@@ -20,4 +20,11 @@ export class ProductsService {
         return this.http.get(`${this.uri}/api/product`);
     }
 
+    approve(id) {
+        return this.http.patch(`${this.uri}/api/product/approve/` + id, {});
+    }
+
+    notApprove(id) {
+        return this.http.patch(`${this.uri}/api/product/not-approve/` + id, {});
+    }
 }

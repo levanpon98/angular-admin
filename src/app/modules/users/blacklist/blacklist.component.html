@@ -76,8 +76,7 @@
                                 {{user['username']}}
                             </td>
                             <td>
-                                <button id="{{user['id']}}" type="button" class="btn btn-dark" (click)="removeFromBlacklist(user['id'])">Remove from Blacklist
-                                </button>
+                                <button class="btn btn-3d btn-green" (click)="removeFromBlacklist(user['id'])" ><i class="fa fa-check"></i>Unblock</button>
                             </td>
                         </tr>
                     </ng-container>

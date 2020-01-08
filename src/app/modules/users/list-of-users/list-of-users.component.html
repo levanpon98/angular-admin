@@ -59,7 +59,7 @@
                     </thead>
                     <tbody>
                     <ng-container class="container" *ngFor="let user of listOfUsers">
-                        <tr *ngIf="user['status'] != null || user['status'] == 1">
+                        <tr *ngIf="user['status'] != null && user['status'] === 1">
                             <td>
                                 {{user['first_name']}}
                             </td>
@@ -76,8 +76,7 @@
                                 {{user['username']}}
                             </td>
                             <td>
-                                <button id="{{user['id']}}" type="button" class="btn btn-dark">Remove from Blacklist
-                                </button>
+                                <button class="btn btn-3d btn-red" (click)="moveToBlacklist(user['id'])" ><i class="fa fa-remove"></i>Block</button>
                             </td>
                         </tr>
                     </ng-container>
